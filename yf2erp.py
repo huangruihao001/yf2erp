@@ -21,7 +21,7 @@ def uploadXML():
     for file in xml_list:
         if '.xml' in file:
             print(SendERP.getXML(file))
-            os.remove("./documents/" + file)  # 删除xml缓存文件
+            # os.remove("./documents/" + file)  # 删除xml缓存文件
 
 
 if __name__ == '__main__':
