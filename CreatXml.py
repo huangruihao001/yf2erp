@@ -94,11 +94,6 @@ class CreatXml():
         except Exception as err:
             print('错误信息：{0}'.format(err))
 
-    def getXML(self):
-        """
-        读取xml文本内容
-        :return:
-        """
 
 
 if __name__ == '__main__':
