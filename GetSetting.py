@@ -1,5 +1,6 @@
 import configparser
 
+
 def get_setting(section, name):
     """
     获取setting.ini中的配置

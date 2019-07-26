@@ -2,6 +2,7 @@ import os
 import CreatXml
 import SendERP
 
+
 def creatXML():
     # 批量生成xml文件
     file_list = os.listdir('./documents')
@@ -20,10 +21,9 @@ def uploadXML():
     for file in xml_list:
         if '.xml' in file:
             print(SendERP.getXML(file))
-            os.remove("./documents/" + file) # 删除xml缓存文件
+            os.remove("./documents/" + file)  # 删除xml缓存文件
 
 
 if __name__ == '__main__':
-    creatXML()
-    uploadXML()
-
+    creatXML()  # 批量生成xml文件
+    uploadXML()  # 批量上传xml文件

@@ -2,21 +2,21 @@ import time
 from xml.dom import minidom
 from ReadExcel import *
 
+
 class CreatXml():
     """
     根据xls创建对应的xml文件
     """
+
     def __init__(self, workbook_path, sheet_name):
-        self.workbook_path = workbook_path # xls表格名称
-        self.sheet_name = sheet_name # xls工作簿名称
-        self.excelOBJ = ReadExcel(self.workbook_path, self.sheet_name) #创建读取xls对象
+        self.workbook_path = workbook_path  # xls表格名称
+        self.sheet_name = sheet_name  # xls工作簿名称
+        self.excelOBJ = ReadExcel(self.workbook_path, self.sheet_name)  # 创建读取xls对象
         self.dom = minidom.Document()  # 创建根节点。每次都要用DOM对象来创建任何节点。
         self.Order_node = self.dom.createElement('Order')  # 创建主订单号标签
         self.EOrder_node = self.dom.createElement('EOrder')  # 创建子订单号标签
-        self.date_row = self.excelOBJ.max_row # xls最大行数
-        self.date_column = self.excelOBJ.max_column # xls最列行数
-
-
+        self.date_row = self.excelOBJ.max_row  # xls最大行数
+        self.date_column = self.excelOBJ.max_column  # xls最列行数
 
     def creat_Order(self):
         """
@@ -86,7 +86,7 @@ class CreatXml():
         self.creat_Order()  # 创建主订单号和子订单号标签
         self.board_code_all(self.excelOBJ.max_row)  # 创建板件详情xml
         try:
-            with open('./documents/' + self.excelOBJ.order+'.xml', 'w', encoding='UTF-8') as fh:
+            with open('./documents/' + self.excelOBJ.order + '.xml', 'w', encoding='UTF-8') as fh:
                 # 4.writexml()第一个参数是目标文件对象，第二个参数是根节点的缩进格式，第三个参数是其他子节点的缩进格式，
                 # 第四个参数制定了换行格式，第五个参数制定了xml内容的编码。
                 self.dom.writexml(fh, indent='', addindent='\t', newl='\n', encoding='UTF-8')
@@ -95,10 +95,8 @@ class CreatXml():
             print('错误信息：{0}'.format(err))
 
 
-
 if __name__ == '__main__':
     a = CreatXml("./documents/圣萝莎erp输出输出参考.xls", "ERP表")
     a.writeXML()
     print(a.dom)
     print(a.dom.childNodes)
-

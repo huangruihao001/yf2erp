@@ -1,6 +1,7 @@
 import requests
 import GetSetting
 
+
 def getXML(fileXML):
     """
     获取xml文本
@@ -8,7 +9,7 @@ def getXML(fileXML):
     :return:
     """
     f = open('./documents/' + fileXML, encoding='utf-8')
-    dataXML= f.read()
+    dataXML = f.read()
     f.close()
     return dataXML
 
@@ -23,7 +24,7 @@ def sendERP(order):
 
     dataXML = getXML(order)
 
-    headers = {"Content-Type":"text/xml; charset=UTF-8", 'Connection': 'close'}
+    headers = {"Content-Type": "text/xml; charset=UTF-8", 'Connection': 'close'}
 
     response = requests.post(url, data=dataXML, headers=headers)
 
