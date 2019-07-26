@@ -4,7 +4,6 @@ import SendERP
 
 file_list = os.listdir('./documents')
 print(file_list)
-
 # 批量生成xml文件
 for file in file_list:
     if '.xls' in file:
@@ -18,3 +17,4 @@ print(xml_list)
 for file in xml_list:
     if '.xml' in file:
         print(SendERP.getXML(file))
+        
