@@ -3,15 +3,18 @@ from xml.dom import minidom
 from ReadExcel import *
 
 class CreatXml():
+    """
+    根据xls创建对应的xml文件
+    """
     def __init__(self, workbook_path, sheet_name):
-        self.workbook_path = workbook_path # xlt表格名称
-        self.sheet_name = sheet_name # xlt工作簿名称
-        self.excelOBJ = ReadExcel(self.workbook_path, self.sheet_name) #创建读取xlt对象
+        self.workbook_path = workbook_path # xls表格名称
+        self.sheet_name = sheet_name # xls工作簿名称
+        self.excelOBJ = ReadExcel(self.workbook_path, self.sheet_name) #创建读取xls对象
         self.dom = minidom.Document()  # 创建根节点。每次都要用DOM对象来创建任何节点。
         self.Order_node = self.dom.createElement('Order')  # 创建主订单号标签
         self.EOrder_node = self.dom.createElement('EOrder')  # 创建子订单号标签
-        self.date_row = self.excelOBJ.max_row # xlt最大行数
-        self.date_column = self.excelOBJ.max_column # xlt最列行数
+        self.date_row = self.excelOBJ.max_row # xls最大行数
+        self.date_column = self.excelOBJ.max_column # xls最列行数
 
 
 
@@ -91,9 +94,16 @@ class CreatXml():
         except Exception as err:
             print('错误信息：{0}'.format(err))
 
+    def getXML(self):
+        """
+        读取xml文本内容
+        :return:
+        """
+
 
 if __name__ == '__main__':
     a = CreatXml("./documents/圣萝莎erp输出输出参考.xls", "ERP表")
     a.writeXML()
-    # print(a.dom)
-    # print(a.dom.toprettyxml())
+    print(a.dom)
+    print(a.dom.childNodes)
+
